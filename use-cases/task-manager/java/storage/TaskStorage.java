@@ -101,6 +101,12 @@ public class TaskStorage {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Retrieve tasks by task priority
+     *
+     * @param priority
+     * @return List of tasks with the specified priority.
+     */
     public List<Task> getTasksByPriority(TaskPriority priority) {
         return tasks.values().stream()
                 .filter(task -> task.getPriority() == priority)

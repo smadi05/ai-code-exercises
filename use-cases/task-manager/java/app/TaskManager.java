@@ -24,6 +24,16 @@ public class TaskManager {
         this.storage = new TaskStorage(storagePath);
     }
 
+    /**
+     * Create task by providing priority.
+     *
+     * @param title
+     * @param description
+     * @param priorityValue
+     * @param dueDateStr
+     * @param tags
+     * @return String
+     */
     public String createTask(String title, String description, int priorityValue,
                              String dueDateStr, List<String> tags) {
         TaskPriority priority = TaskPriority.fromValue(priorityValue);
@@ -43,6 +53,14 @@ public class TaskManager {
         return storage.addTask(task);
     }
 
+    /**
+     * Lists tasks based on the provided filters.
+     *
+     * @param statusFilter
+     * @param priorityFilter
+     * @param showOverdue
+     * @return A list of tasks.
+     */
     public List<Task> listTasks(String statusFilter, Integer priorityFilter, boolean showOverdue) {
         if (showOverdue) {
             return storage.getOverdueTasks();
@@ -79,6 +97,13 @@ public class TaskManager {
         }
     }
 
+    /**
+     * Update the task priority.
+     *
+     * @param taskId
+     * @param newPriorityValue
+     * @return Boolean
+     */
     public boolean updateTaskPriority(String taskId, int newPriorityValue) {
         TaskPriority newPriority = TaskPriority.fromValue(newPriorityValue);
 
